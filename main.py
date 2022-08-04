@@ -288,20 +288,11 @@ def onmessage(update,bot:ObigramClient):
 
         user_info = jdb.get_user(username)
 
-        if username == tl_admin_user or user_info:  # validate user
-            if user_info is None:
-                if username == tl_admin_user:
+        
                     jdb.create_admin(username)
-                else:
-                    jdb.create_user(username)
+                
                 user_info = jdb.get_user(username)
                 jdb.save()
-        else:
-            mensaje = "🎐No tiene acceso.\n👨🏻‍💻Contacta a : @Zeta30\n"
-            intento_msg = "💢El usuario @"+username+ " está solicitando permiso para usar bot💢"
-            bot.sendMessage(update.message.chat.id,mensaje)
-            bot.sendMessage(1007430305,intento_msg)
-            return
          
         msgText = ''
         try: msgText = update.message.text
